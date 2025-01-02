@@ -25,6 +25,10 @@ const Footer = () => {
           </ul>
         </div>
       </div>
+      <div>
+        <hr />
+        <p className='py-5 text-sm text-center'>Copyright 2025@ forever.com - All Right Reserverd</p>
+      </div>
     </div>
   )
 }
