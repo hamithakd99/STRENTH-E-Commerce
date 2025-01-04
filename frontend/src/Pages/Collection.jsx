@@ -19,14 +19,17 @@ const Collection = () => {
     }
   }
 
+  const toggleSubCategory = (e) => {
+    if (subCategory.includes(e.target.value)) {
+      setsubCategory(prev => prev.filter(item => item !== e.target.value))
+    }else{
+      setsubCategory(prev => [...prev, e.target.value])
+    }
+  }
+
   useEffect(()=> {
     setfilterProducts(products)
   },[])
-
-  useEffect(()=> {
-    console.log(category);
-    
-  }, [category])
 
   return (
     <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t ">
@@ -99,7 +102,7 @@ const Collection = () => {
                 name=""
                 id=""
                 className="w-3"
-                value={"Topwear"}
+                value={"Topwear"} onChange={toggleSubCategory}
               />{" "}
               Topwear
             </p>
@@ -109,7 +112,7 @@ const Collection = () => {
                 name=""
                 id=""
                 className="w-3"
-                value={"Bottomwear"}
+                value={"Bottomwear"} onChange={toggleSubCategory}
               />
               Bottomwear
             </p>
@@ -119,7 +122,7 @@ const Collection = () => {
                 name=""
                 id=""
                 className="w-3"
-                value={"Winterwear"}
+                value={"Winterwear"} onChange={toggleSubCategory}
               />{" "}
               Winterwear
             </p>
