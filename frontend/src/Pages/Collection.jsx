@@ -8,10 +8,25 @@ const Collection = () => {
   const { products } = useContext(ShopContext);
   const [showFilter, setshowFilter] = useState(false);
   const [filterProducts, setfilterProducts] = useState([]);
+  const [category, setcategory] = useState([]);
+  const [subCategory, setsubCategory] = useState([]);
+
+  const toggleCategory = (e) => {
+    if (category.includes(e.target.value)) {
+      setcategory(prev => prev.filter(item => item !== e.target.value))
+    }else{
+      setcategory(prev => [...prev, e.target.value])
+    }
+  }
 
   useEffect(()=> {
     setfilterProducts(products)
   },[])
+
+  useEffect(()=> {
+    console.log(category);
+    
+  }, [category])
 
   return (
     <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t ">
@@ -43,7 +58,7 @@ const Collection = () => {
                 name=""
                 id=""
                 className="w-3"
-                value={"Men"}
+                value={"Men"} onChange={toggleCategory}
               />
               Men
             </p>
@@ -53,7 +68,7 @@ const Collection = () => {
                 name=""
                 id=""
                 className="w-3"
-                value={"Women"}
+                value={"Women"} onChange={toggleCategory}
               />
               Women
             </p>
@@ -63,7 +78,7 @@ const Collection = () => {
                 name=""
                 id=""
                 className="w-3"
-                value={"Kids"}
+                value={"Kids"} onChange={toggleCategory}
               />
               Kids
             </p>
